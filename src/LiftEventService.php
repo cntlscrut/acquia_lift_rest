@@ -2,6 +2,7 @@
 
 namespace Drupal\acquia_lift_rest;
 
+//todo: this can probably be removed if installed more properly
 require drupal_get_path('module', 'acquia_lift_rest') .'/vendor/autoload.php';
 
 // Key and secret are available from Lift Profile Manager
@@ -35,12 +36,8 @@ class LiftEventService {
 	 * Grab the account id from Lift Configuration
 	 */
 	public function __construct() {
-		var_dump('constructing!!!');
-		//$test = '13NuhMeONpSCgc103gPFiZ';
-		$test = '2ArmUu3MwzwsbA4nfoRQXz';
 		
-		//$this->userId = $_COOKIE['tc_ptid'];
-		$this->userId = $test;
+		$this->userId = $_COOKIE['tc_ptid'];
 
 		$lift_config = \Drupal::config('acquia_lift.settings');
 		$this->liftAccount = $lift_config->get('credential.account_id');
@@ -100,7 +97,6 @@ class LiftEventService {
 		);
 
 		$query = http_build_query($get_query);	
-		var_dump($this->liftUrl);
 		return $this->liftUrl.'?'.$query;
 	}
 
