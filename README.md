@@ -12,6 +12,8 @@ Run the command within the directory
 Contains a class called `LiftEventService` with a method called `fetchEvents` which will also contain an `events` object containing all events for the current user.
 The current user is determined by a cookie value set by Lift.
 
+For more information on the visitor_query endpoint see: <http://docs.lift.acquia.com/profilemanager/#visitor_query>
+
 #### Example:
 In the following example we are showing how to parse through the data to obtain the contentId which is a viewed node and grab the values for the field_topics.
 ```php
