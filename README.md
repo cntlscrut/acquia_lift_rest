@@ -27,7 +27,7 @@ use Drupal\acquia_lift_rest\LiftEventService;
 /**
  * test function for test the lift connector class
  */ 
-function rf_lift_js_api_fetch() {
+function example_topics_fetch() {
 
   $liftEvents = new LiftEventService();
 
