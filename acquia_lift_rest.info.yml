@@ -1,0 +1,6 @@
+name: Lift REST Connector
+description: Creates a connector to pull data from the Profile Manager API Visitor Query endpoint
+type: module
+package: Lift
+version: 1.0
+core: 8.x

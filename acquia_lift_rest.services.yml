@@ -1,0 +1,3 @@
+services:
+  acquia_lift_rest.connector:
+    class: Drupal\acquia_lift_rest\LiftEventService
