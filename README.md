@@ -7,6 +7,8 @@ Run the command within the directory
 ```
 :$ composer install
 ```
+### Configuration
+Visit the Admin -> Configuration -> System -> Acquia Lift Configuration page and enter the Access Key ID and the Secret Access Key values. You can obtain the values from the Lift Profile Management site within the profile page for the desired user. 
 
 ### Usage
 Contains a class called `LiftEventService` with a method called `fetchEvents` which will also contain an `events` object containing all events for the current user.
