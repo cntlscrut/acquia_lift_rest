@@ -6,8 +6,8 @@ namespace Drupal\acquia_lift_rest;
 require drupal_get_path('module', 'acquia_lift_rest') .'/vendor/autoload.php';
 
 // Key and secret are available from Lift Profile Manager
-define(LIFT_KEY, ""); 
-define(LIFT_SECRET, "");
+//define(LIFT_KEY, ""); 
+//define(LIFT_SECRET, "");
 
 use Acquia\Hmac\Guzzle\HmacAuthMiddleware;
 use Acquia\Hmac\Key;
@@ -23,6 +23,8 @@ use GuzzleHttp\Exception\ClientException;
  */
 class LiftEventService {
 
+	protected $liftKey;
+	protected $liftSecret;
 	protected $userId;
 	protected $liftAccount;
 	protected $liftUrl;
@@ -43,6 +45,10 @@ class LiftEventService {
 		$this->liftAccount = $lift_config->get('credential.account_id');
 
 		$this->liftUrl = "https://us-east-1-api.lift.acquia.com/dashboard/rest/" . $this->liftAccount . "/visitor_query";
+
+		$userConfig = \Drupal::config('config.acquia_lift_rest');
+		$this->liftKey = $userConfig->get('user_key_title');
+		$this->liftSecret = $userConfig->get('secret_key_title');
 	}
 
 	/**
@@ -72,7 +78,7 @@ class LiftEventService {
 	 * build the handler stack
 	 */
 	protected function buildStack() {
-		$key = new Key(LIFT_KEY, LIFT_SECRET);
+		$key = new Key($this->liftKey, $this->liftSecret);
 		$middleware = new HmacAuthMiddleware($key);
 
 		$stack = HandlerStack::create();

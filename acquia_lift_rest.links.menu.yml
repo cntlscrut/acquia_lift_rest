@@ -1,0 +1,4 @@
+acquia_lift_rest.acquia_lift_config_form:
+  title: 'Acquia Lift Configuration'
+  parent: system.admin_config_system
+  route_name: acquia_lift_rest.acquia_lift_config_form

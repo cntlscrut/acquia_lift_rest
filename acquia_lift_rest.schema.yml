@@ -1,0 +1,15 @@
+acquia_lift_rest.user_key:
+  type: config_object
+  label: 'Acquia Lift User Key'
+  mapping:
+    title:
+      type: text
+      label: 'Access Key ID'
+
+acquia_lift_rest.secret_key:
+  type: config_object
+  label: 'Acquia Lift Secret Key'
+  mapping:
+    title:
+      type: text
+      label: 'Secret Key'

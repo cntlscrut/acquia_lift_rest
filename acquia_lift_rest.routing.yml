@@ -1,0 +1,7 @@
+acquia_lift_rest.acquia_lift_config_form:
+  path: '/admin/config/system/acquia-lift-rest'
+  defaults:
+    _form: 'Drupal\acquia_lift_rest\Form\AcquiaLiftConfigForm'
+    _title: 'Acquia Lift Rest Configuration'
+  requirements:
+    _permission: 'administer site configuration'
