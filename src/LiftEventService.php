@@ -5,10 +5,6 @@ namespace Drupal\acquia_lift_rest;
 //todo: this can probably be removed if installed more properly
 require drupal_get_path('module', 'acquia_lift_rest') .'/vendor/autoload.php';
 
-// Key and secret are available from Lift Profile Manager
-//define(LIFT_KEY, ""); 
-//define(LIFT_SECRET, "");
-
 use Acquia\Hmac\Guzzle\HmacAuthMiddleware;
 use Acquia\Hmac\Key;
 use GuzzleHttp\Client;
@@ -40,6 +36,7 @@ class LiftEventService {
 	public function __construct() {
 		
 		$this->userId = $_COOKIE['tc_ptid'];
+		//$this->userId = '13NuhMeONpSCgc103gPFiZ';
 
 		$lift_config = \Drupal::config('acquia_lift.settings');
 		$this->liftAccount = $lift_config->get('credential.account_id');

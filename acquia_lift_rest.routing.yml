@@ -5,3 +5,11 @@ acquia_lift_rest.acquia_lift_config_form:
     _title: 'Acquia Lift Rest Configuration'
   requirements:
     _permission: 'administer site configuration'
+
+acquia_lift_rest.acquia_lift_testing:
+  path: '/acquia-lift-test'
+  defaults:
+    _controller: 'Drupal\acquia_lift_rest\Test\AcquiaLiftTest:runTest'
+    _title: 'Acquia Lift REST Testing'
+  requirements:
+    _permission: 'administer site configuration'
