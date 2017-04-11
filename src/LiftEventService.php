@@ -36,7 +36,8 @@ class LiftEventService {
 	public function __construct() {
 		
 		$this->userId = $_COOKIE['tc_ptid'];
-		//$this->userId = '13NuhMeONpSCgc103gPFiZ';
+		//$this->userId = '13NuhMeONpSCgc103gPFiZ'; // this user id will fail
+		//$this->userId = '2ArmUu3MwzwsbA4nfoRQXz'; // this user id will return data
 
 		$lift_config = \Drupal::config('acquia_lift.settings');
 		$this->liftAccount = $lift_config->get('credential.account_id');
