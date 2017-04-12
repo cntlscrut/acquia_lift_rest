@@ -17,21 +17,12 @@ class AcquiaLiftTest {
 	public function runTest() {
 
 		$liftEvents = new LiftEventService();
+		var_dump($liftEvents->fetchPerson());
 
-		$nids = [];
-
-		foreach ($liftEvents->fetchEvents()->events as $key => $event) {
-
-		if ($event->contentId !== NULL && !in_array($event->contentId, $nids)) {
-		  $nids[] = $event->contentId;
-		}
-		}
-
-		var_dump($nids);die;
 
 	    $build = array(
 	      '#type' => 'markup',
-	      '#markup' => t('Hello World!'),
+	      '#markup' => t(print_r($liftEvents->fetchPerson(), TRUE)),
 	    );
 	    return $build;
 	}

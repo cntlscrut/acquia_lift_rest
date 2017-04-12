@@ -56,7 +56,29 @@ class LiftEventService {
 
 		$client = \Drupal::httpClient();
 
-		$request = new Request('GET', $this::buildQuery());
+		$request = new Request('GET', $this::buildQuery('event'));
+
+		try {
+			$response = $client->send($request, $this::buildStack());
+		} catch (ClientException $e) {
+			print "message: " . $e->getMessage();
+			$response = $e->getResponse();
+		}
+		
+		$body = $response->getBody();
+
+		$visitor_data = json_decode($body);
+
+		return $visitor_data;
+	}
+
+	/**
+	 * fetch person data from lift
+	 */
+	public function fetchPerson() {
+		$client = \Drupal::httpClient();
+
+		$request = new Request('GET', $this::buildQuery('person'));
 
 		try {
 			$response = $client->send($request, $this::buildStack());
@@ -90,19 +112,18 @@ class LiftEventService {
 	}
 
 	/**
-	 * build the query string for the request
+	 * build the query string for the person request
+	 * @param string $type - can be for either person, event, touch
 	 */
-	protected function buildQuery() {
+	protected function buildQuery($type) {
 
 		$get_query = array(
 			'identifier' => $this->userId,
 			'identifierType' => 'tracking',
-			'personTables' => 'event',
+			'personTables' => $type,
 		);
 
 		$query = http_build_query($get_query);	
 		return $this->liftUrl.'?'.$query;
 	}
-
-
 }
